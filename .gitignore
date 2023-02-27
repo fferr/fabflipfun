@@ -1,0 +1,59 @@
+node_modules/
+npm-debug.*
+coverage/
+*.DS_Store
+junit.xml
+.vscode
+
+# Don't Add Bundle output to repo
+vendor/
+output/
+.bundle/config
+
+ios/main.jsbundle
+ios/main.jsbundle.meta
+main.jsbundle.map
+ios/DerivedData
+ios/fffMobile.xcworkspace/xcuserdata
+ios/fffMobile.xcodeproj/xcuserdata
+ios/fffMobile.xcodeproj/project.xcworkspace/xcuserdata
+
+# Ruby / CocoaPods
+/ios/Pods/
+/vendor/bundle/
+/ios/Pods/
+/ios/Podfile.lock
+# Android/IntelliJ
+android/.project
+android/.settings
+android/app/bin/
+android/app/.classpath
+android/app/.project
+android/app/.settings/
+*.class
+buck-out/
+\.buckd/
+*.keystore
+!debug.keystore
+
+build/
+.idea
+.idea/misc.xml
+.idea/workspace.xml
+.gradle
+local.properties
+*.iml
+*.hprof
+*.aab
+*.apk
+
+# Bundle artifact
+index.android.bundle
+index.android.bundle.map
+*.jsbundle
+# **/report.xml
+
+# keys and play json
+android/app/keystore.jks
+android/google-play.json
+AuthKey_JB9Q36589U.p8
