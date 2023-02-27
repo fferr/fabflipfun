@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { createSocketConnection, postMessage } from "./api/websocket";
+
+createSocketConnection();
 
 function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const message = e.target[0].value;
+    postMessage(message);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={handleSubmit}>
+        <input type="text" />
+        <button type="submit">post message</button>
+      </form>
     </div>
   );
 }
