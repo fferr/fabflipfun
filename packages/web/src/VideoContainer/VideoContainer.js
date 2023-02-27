@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import useElementOnScreen from '../hooks/useElementOnScreen';
 import './VideoContainer.css'
 
-const VideoContainer = () => {
+const VideoContainer = ({ index, loadMoreRef}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
   const options = {
@@ -24,10 +24,9 @@ useEffect(() => {
   }
 }, [isVisible]);
 
-console.log(isVisible, 'is visible');
 
   return (
-    <div className="video-container">
+    <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
       <div className="video" ref={videoRef}>{isPlaying ? 'Playing' : 'Not Playing'}</div>
     </div>
   )
