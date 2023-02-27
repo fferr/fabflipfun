@@ -25,7 +25,7 @@ const VideoContainer = ({ index, loadMoreRef }) => {
 
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
-      <div className="video" ref={videoRef}>
+      <div className="video" ref={videoRef} data-testid="video-element">
         {isPlaying ? 'Playing' : 'Not Playing'}
       </div>
     </div>

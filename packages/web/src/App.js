@@ -1,6 +1,6 @@
 import './App.css';
 import { useState, useRef, useEffect } from 'react';
-import useElementOnScreen from './hooks/useElementOnScreen';
+import { useElementOnScreen } from './hooks/useElementOnScreen';
 import VideoContainer from './VideoContainer/VideoContainer';
 
 function App() {
