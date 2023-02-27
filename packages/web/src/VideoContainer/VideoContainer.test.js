@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
-import * as hooks from './hooks/useElementOnScreen';
+import VideoContainer from './VideoContainer';
+import * as hooks from '../hooks/useElementOnScreen';
 
 beforeEach(() => {
   // IntersectionObserver isn't available in test environment
@@ -13,15 +13,15 @@ beforeEach(() => {
   window.IntersectionObserver = mockIntersectionObserver;
 });
 
-test('renders initial videos', () => {
-  render(<App />);
-  const videos = screen.getAllByTestId(/video-element/i);
-  expect(videos).toHaveLength(4);
+test('renders not playing correctly', () => {
+  render(<VideoContainer />);
+  const videoText = screen.getByText(/Not Playing/i);
+  expect(videoText).toBeInTheDocument();
 });
 
-test('renders more videos after scrolling', () => {
+test('renders playing correctly', () => {
   jest.spyOn(hooks, 'useElementOnScreen').mockImplementation(() => true);
-  render(<App />);
-  const videos = screen.getAllByTestId(/video-element/i);
-  expect(videos).toHaveLength(8);
+  render(<VideoContainer />);
+  const videoText = screen.getByText(/Playing/i);
+  expect(videoText).toBeInTheDocument();
 });
