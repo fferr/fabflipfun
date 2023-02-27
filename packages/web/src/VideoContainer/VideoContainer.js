@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
 
@@ -23,11 +24,15 @@ const VideoContainer = ({ index, loadMoreRef }) => {
     }
   }, [isVisible]);
 
+  const handleClickCTA = () =>
+    window.open('https://fabfitfun.com/shop', '_blank');
+
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
       <div className="video" ref={videoRef} data-testid="video-element">
         {isPlaying ? 'Playing' : 'Not Playing'}
       </div>
+      <Button onClick={handleClickCTA}>CTA</Button>
     </div>
   );
 };

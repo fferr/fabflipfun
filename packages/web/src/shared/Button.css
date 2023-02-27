@@ -1,0 +1,10 @@
+.shared-button {
+  border: none;
+  background: none;
+  height: 48px;
+  border: solid 1px black;
+}
+
+.shared-button:hover {
+  cursor: pointer;
+}
