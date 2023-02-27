@@ -1,0 +1,27 @@
+.video-container {
+  height: 100vh;
+  border: solid blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.video {
+  height: 80%;
+  width: 80%;
+  border: solid red;
+  display: flex; 
+  align-items: flex-end;
+}
+
+@media screen and (min-width: 992px) {
+  .video-container {
+    height: 720px;
+    width: 520px;
+  }
+  .video {
+    height: 600px;
+    width: 350px;
+  }
+}
