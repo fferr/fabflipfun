@@ -1,11 +1,44 @@
 {
-  "name": "root",
+  "name": "fabflipfun",
+  "version": "0.0.1",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@react-native-async-storage/async-storage",
+      "**/react",
+      "**/react-dom",
+      "**/react-native",
+      "**/react-native/**",
+      "**/react-native-codegen",
+      "**/react-native-dev-menu",
+      "**/react-native-macos"
+    ]
+  },
+  "scripts": {
+    "reset": "find . -type dir -name node_modules | xargs rm -rf && rm -rf yarn.lock",
+    "android:metro": "npm --workspaces @my-app/mobile start",
+    "android:start": "npm --workspaces @my-app/mobile android",
+    "android:studio": "npm --workspaces @my-app/mobile studio",
+    "ios:metro": "npm --workspaces @my-app/mobile start",
+    "ios:start": "npm --workspaces @my-app/mobile ios",
+    "ios:xcode": "npm --workspaces @my-app/mobile xcode",
+    "ios:pods": "npm i packages/mobile/ios pod install",
+    "web:start": "npm --workspaces @my-app/web start",
+    "web:build": "npm --workspaces @my-app/web build",
+    "lint": "ultra -r lint",
+    "lint:fix": "ultra -r lint:fix",
+    "test": "ultra -r test"
+  },
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react-app": "^6.2.2",
+    "eslint-plugin-react-native": "^3.11.0",
+    "prettier": "^2.3.2",
+    "ultra-runner": "^3.10.5",
     "lerna": "^6.5.1"
   }
 }
-
