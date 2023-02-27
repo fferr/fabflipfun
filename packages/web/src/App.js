@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState, useRef, useEffect } from 'react';
+import { useElementOnScreen } from './hooks/useElementOnScreen';
+import VideoContainer from './VideoContainer/VideoContainer';
 
 function App() {
+  const [videos, setVideos] = useState([1, 2, 3, 4]);
+  const loadMoreRef = useRef();
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.3,
+  };
+  const loadMoreVideos = useElementOnScreen(options, loadMoreRef);
+
+  useEffect(() => {
+    if (loadMoreVideos) {
+      // fetch more videos here
+      setVideos((prevState) => [...prevState, 1, 2, 3, 4]);
+    }
+  }, [loadMoreVideos]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {videos.map((v, index) => (
+        <VideoContainer index={index} loadMoreRef={loadMoreRef} />
+      ))}
     </div>
   );
 }
