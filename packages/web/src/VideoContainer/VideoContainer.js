@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import useElementOnScreen from '../hooks/useElementOnScreen';
+import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
 
 const VideoContainer = ({ index, loadMoreRef }) => {
