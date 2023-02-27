@@ -13,13 +13,13 @@ beforeEach(() => {
   window.IntersectionObserver = mockIntersectionObserver;
 });
 
-test('renders learn react link', () => {
+test('renders initial videos', () => {
   render(<App />);
   const videos = screen.getAllByTestId(/video-element/i);
   expect(videos).toHaveLength(4);
 });
 
-test('renders playing correctly', () => {
+test('renders more videos after scrolling', () => {
   jest.spyOn(hooks, 'useElementOnScreen').mockImplementation(() => true);
   render(<App />);
   const videos = screen.getAllByTestId(/video-element/i);
