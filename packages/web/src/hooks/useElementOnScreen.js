@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 const useElementOnScreen = (options, targetRef) => {
   const [isVisible, setIsVisible] = useState();
   const callbackFunction = (entries) => {
