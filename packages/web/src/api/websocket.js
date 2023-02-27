@@ -29,7 +29,3 @@ export function createSocketConnection() {
     startSocketEvents();
   }
 }
-
-export function postMessage(message) {
-  socket.emit("message", message);
-}
