@@ -1,40 +1,38 @@
-import React, { useState, useRef } from 'react';
-import { StyleSheet, View, TouchableOpacity, Text } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { StyleSheet, View, TouchableOpacity, Text, Dimensions } from 'react-native';
 import Video from 'react-native-video';
 
-const VideoPlayer = ({ videoUri }) => {
-  const [paused, setPaused] = useState(true);
+const { width, height } = Dimensions.get('window');
+
+const VideoPlayer = ({ videoUri, isPlaying, index, soundOn, toggleSoundOn }) => {
+  console.log(isPlaying, index);
   const videoRef = useRef(null);
 
-  const handlePlayPause = () => {
-    setPaused(!paused);
+  const restartVideo = () => {
+    videoRef.current.seek(0);
   };
 
+  useEffect(() => {
+    restartVideo();
+  }, [isPlaying]);
+
   const handleVideoEnd = () => {
-    videoRef.current.seek(0);
-    setPaused(true);
+    restartVideo();
   };
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        activeOpacity={0.75}
-        onPress={handlePlayPause}
-        style={styles.videoContainer}>
+      <TouchableOpacity activeOpacity={0.75} onPress={toggleSoundOn} style={styles.videoContainer}>
         <Video
+          volume={soundOn ? 0 : 5}
           ref={videoRef}
-          source={{ uri: videoUri }}
+          source={videoUri}
           style={styles.video}
           resizeMode={'cover'}
-          repeat={false}
-          paused={paused}
+          repeat={true}
+          paused={!isPlaying}
           onEnd={handleVideoEnd}
         />
-        {paused && (
-          <View style={styles.playButton}>
-            <Text style={styles.playButtonText}>▶️</Text>
-          </View>
-        )}
       </TouchableOpacity>
     </View>
   );
@@ -42,7 +40,8 @@ const VideoPlayer = ({ videoUri }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height,
+    width,
     backgroundColor: 'black',
   },
   videoContainer: {

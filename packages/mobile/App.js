@@ -1,42 +1,44 @@
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { ScrollView, StyleSheet, Dimensions } from 'react-native';
 
-import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 import VideoPlayer from './src/VideoPlayer';
 
-const videoUri = 'https://www.youtube.com/watch?v=yZmox-eQNkg';
-
+const asd = require('./src/VideoPlayer/quick_slick_ce04033941.mp4');
+const videos = [asd, asd];
+const { width, height } = Dimensions.get('window');
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const ref = useRef();
+  const [playingVideo, setPlayingVideo] = useState(0);
+  const [soundOn, setSoundOn] = useState(false);
+  const handleVideoChange = event => {
+    const nextVideo = Math.round(
+      (event.nativeEvent.contentOffset.y - height * 0.6) /
+        (event.nativeEvent.contentSize.height / videos.length)
+    );
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    console.log(nextVideo);
+    ref.current.scrollTo({ y: height * playingVideo });
+    setPlayingVideo(nextVideo);
   };
 
+  // useEffect(() => {
+  //   const scrollTo = height * playingVideo;
+  //   console.log(scrollTo);
+  //   ref.current.scrollTo(scrollTo);
+  // }, [playingVideo]);
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView contentInsetAdjustmentBehavior="automatic" style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <VideoPlayer videoUri={videoUri} />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView ref={ref} onScrollEndDrag={handleVideoChange} bounces={false}>
+      {videos.map((video, index) => (
+        <VideoPlayer
+          videoUri={video}
+          isPlaying={index == playingVideo}
+          index={index}
+          toggleSoundOn={() => setSoundOn(!soundOn)}
+          soundOn={soundOn}
+        />
+      ))}
+    </ScrollView>
   );
 };
 
