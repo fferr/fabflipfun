@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVolumeOff, faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
 
@@ -32,6 +34,9 @@ const VideoContainer = ({ index, loadMoreRef }) => {
 
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
+      <button className="video-mute-button">
+        <FontAwesomeIcon icon={muted ? faVolumeOff : faVolumeHigh} />
+      </button>
       <video
         className="video_player"
         loop

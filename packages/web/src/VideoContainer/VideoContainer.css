@@ -15,6 +15,19 @@
   align-items: flex-end;
 }
 
+.video-mute-button {
+  background-color: rgba(219, 219, 219, 0.2);
+  border-radius: 50%;
+  color: white;
+  border: none;
+  height: 30px;
+  width: 30px;
+}
+
+.video-mute-button:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 992px) {
   .video-container {
     height: 720px;
