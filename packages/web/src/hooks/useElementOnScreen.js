@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-const useElementOnScreen = (options, targetRef) => {
+export const useElementOnScreen = (options, targetRef) => {
   const [isVisible, setIsVisible] = useState();
   const callbackFunction = (entries) => {
     const [entry] = entries; //const entry = entries[0]
@@ -16,4 +16,3 @@ const useElementOnScreen = (options, targetRef) => {
   }, [targetRef, options]);
   return isVisible;
 };
-export { useElementOnScreen };
