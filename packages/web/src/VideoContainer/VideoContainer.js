@@ -5,6 +5,7 @@ import './VideoContainer.css';
 
 const VideoContainer = ({ index, loadMoreRef }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
   const videoRef = useRef(null);
   const options = {
     root: null,
@@ -15,10 +16,12 @@ const VideoContainer = ({ index, loadMoreRef }) => {
   useEffect(() => {
     if (isVisible) {
       if (!isPlaying) {
+        videoRef.current.play();
         setIsPlaying(true);
       }
     } else {
       if (isPlaying) {
+        videoRef.current.pause();
         setIsPlaying(false);
       }
     }
@@ -27,12 +30,26 @@ const VideoContainer = ({ index, loadMoreRef }) => {
   const handleClickCTA = () =>
     window.open('https://fabfitfun.com/shop', '_blank');
 
+  const onVideoClick = () => {
+    setMuted((prevState) => !prevState);
+  };
+
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
       <div className="video" ref={videoRef} data-testid="video-element">
         {isPlaying ? 'Playing' : 'Not Playing'}
       </div>
       <Button onClick={handleClickCTA}>CTA</Button>
+      <video
+        className="video_player"
+        loop
+        preload="true"
+        ref={videoRef}
+        onClick={onVideoClick}
+        src="http://localhost:1337/uploads/INSERTNAMEHERE_b9007ecb98.mp4"
+        autoPlay
+        muted={muted}
+      ></video>
     </div>
   );
 };
