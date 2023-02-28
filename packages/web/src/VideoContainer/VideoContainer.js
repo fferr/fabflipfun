@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
+import * as commons from 'commons';
 
 const VideoContainer = ({ index, loadMoreRef }) => {
   const [isPlaying, setIsPlaying] = useState(false);
