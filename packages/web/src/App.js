@@ -2,6 +2,9 @@ import './App.css';
 import { useState, useRef, useEffect } from 'react';
 import { useElementOnScreen } from './hooks/useElementOnScreen';
 import VideoContainer from './VideoContainer/VideoContainer';
+import { createSocketConnection } from './api/websocket';
+
+createSocketConnection();
 
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
