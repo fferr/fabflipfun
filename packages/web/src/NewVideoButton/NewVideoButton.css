@@ -1,0 +1,23 @@
+.new-video-button {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+  margin-top: 1rem;
+  z-index: 1;
+  transition: transform 0.1s ease-in-out;
+}
+
+.new-video-button.not-visible {
+  transform: translateY(-200px);
+}
+
+.new-video-button button {
+  all: unset;
+  background-color: aqua;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
