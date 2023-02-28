@@ -14,5 +14,8 @@
   ],
   "scripts": {
     "test": "node ./__tests__/commons.test.js"
+  },
+  "dependencies": {
+    "socket.io-client": "^4.6.1"
   }
 }
