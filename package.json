@@ -20,13 +20,22 @@
   "scripts": {
     "lint": "eslint --ext .js,.jsx packages/",
     "lint:fix": "eslint --fix --ext .js,.jsx packages/",
-    "prettier": "prettier --write 'packages/**/*.{js,jsx}'",
+    "prettier": "prettier --write '*.{js,jsx}'",
     "check:all": "npm run lint && npm run prettier -- --check",
     "check:lint": "npm run lint --silent",
     "check:prettier": "npm run prettier -- --check"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint": "^8.35.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^25.7.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "prettier": "^2.3.2",
     "ultra-runner": "^3.10.5",
     "lerna": "^6.5.1"

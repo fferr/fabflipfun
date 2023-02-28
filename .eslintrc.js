@@ -6,16 +6,16 @@ module.exports = {
     jest: true,
     node: true,
   },
-  extends: ["airbnb", "plugin:react/recommended", "plugin:react-hooks/recommended", "prettier", "prettier/react"],
-  plugins: ["react", "import", "jsx-a11y", "react-hooks", "prettier"],
+  extends: ['plugin:react/recommended', 'plugin:react-hooks/recommended', 'prettier'],
+  plugins: ['react', 'import', 'react-hooks', 'prettier'],
   rules: {
-    "prettier/prettier": "error",
-    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
+    'prettier/prettier': 'error',
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
   },
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   settings: {
     react: {
-      version: "detect",
+      version: 'detect',
     },
   },
 };
