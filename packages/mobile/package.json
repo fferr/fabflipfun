@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "commons": "file:../commons/commons-1.0.0.tgz",
     "react": "18.1.0",
     "react-native": "0.70.7",
     "react-native-vector-icons": "^9.2.0",
@@ -20,6 +21,7 @@
     "@babel/core": "^7.12.9",
     "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@types/react-native": "^0.71.3",
     "babel-jest": "^26.6.3",
     "eslint": "^7.32.0",
     "jest": "^26.6.3",

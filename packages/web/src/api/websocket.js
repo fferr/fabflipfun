@@ -12,8 +12,8 @@ function startSocketEvents() {
   socket.on('disconnect', () => {
     console.log('disconnected from server');
   });
-  socket.on('message', (message) => {
-    console.log('message', message);
+  socket.on('new-video', (newVideo) => {
+    console.log('newVideo', newVideo);
   });
 }
 
