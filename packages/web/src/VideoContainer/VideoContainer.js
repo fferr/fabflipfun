@@ -6,8 +6,15 @@ import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import Video from './INSERTNAMEHERE.mp4';
 import './VideoContainer.css';
 
-const VideoContainer = ({ index, loadMoreRef, isMuted, handleClickMute }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+const VideoContainer = ({
+  index,
+  loadMoreRef,
+  isMuted,
+  handleClickMute,
+  videoPlaying,
+  setVideoPlaying,
+}) => {
+  // const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
   const options = {
     root: null,
@@ -15,32 +22,33 @@ const VideoContainer = ({ index, loadMoreRef, isMuted, handleClickMute }) => {
     threshold: 0.3,
   };
   const isVisible = useElementOnScreen(options, videoRef);
-  useEffect(() => {
-    if (isVisible) {
-      if (!isPlaying) {
-        videoRef.current.play();
-        setIsPlaying(true);
-      }
-    } else {
-      if (isPlaying) {
-        videoRef.current.pause();
-        setIsPlaying(false);
-      }
-    }
-  }, [isVisible]);
+  const isPlaying = videoPlaying === index;
 
   const handleClickCTA = () =>
     window.open('https://fabfitfun.com/shop', '_blank');
 
   const onVideoClick = () => {
+    if (!isPlaying) {
+      videoRef.current.play();
+      setVideoPlaying(index);
+    }
     if (isPlaying) {
       videoRef.current.pause();
-      setIsPlaying(!isPlaying);
-    } else {
-      videoRef.current.play();
-      setIsPlaying(!isPlaying);
     }
   };
+
+  useEffect(() => {
+    if (isVisible) {
+      videoRef.current.play();
+      setVideoPlaying(index);
+    }
+  }, [isVisible]);
+
+  useEffect(() => {
+    if (!isPlaying) {
+      videoRef.current.pause();
+    }
+  }, [isPlaying]);
 
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>

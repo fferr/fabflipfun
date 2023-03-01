@@ -9,6 +9,7 @@ createSocketConnection();
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
   const [isMuted, setIsMuted] = useState(true);
+  const [videoPlaying, setVideoPlaying] = useState(0);
   const loadMoreRef = useRef();
   const videosListRef = useRef();
 
@@ -45,6 +46,8 @@ function App() {
             key={index}
             isMuted={isMuted}
             handleClickMute={handleClickMute}
+            videoPlaying={videoPlaying}
+            setVideoPlaying={setVideoPlaying}
           />
         ))}
       </div>
