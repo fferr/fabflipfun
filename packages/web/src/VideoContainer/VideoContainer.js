@@ -12,6 +12,11 @@ const VideoContainer = ({
   videoPlaying,
   setVideoPlaying,
   videoSrc,
+  id,
+  brand,
+  description,
+  price,
+  imageSrc,
 }) => {
   const videoRef = useRef(null);
   const options = {
@@ -66,14 +71,17 @@ const VideoContainer = ({
       ></video>
       <div className="video-product-details">
         <div className="video-product-image-container" onClick={handleClickCTA}>
-          <img src="https://scontent01.fabfitfun.com/ecom/images/2021/8/697000000_spongell-hand-body-wash-70-honey-blossom-SPO-BE-166-sf-1.jpg"></img>
+          <img
+            src={`http://localhost:1337${imageSrc}`}
+            alt={`product-${id}`}
+          ></img>
         </div>
         <div>
           <p className="video-product-name" onClick={handleClickCTA}>
-            Brand Name - Product Name
+            {brand}
           </p>
-          <p>Product Description</p>
-          <p>$0.00</p>
+          <p>{description}</p>
+          <p>${price}</p>
         </div>
       </div>
     </div>

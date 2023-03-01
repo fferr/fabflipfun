@@ -15,6 +15,13 @@ export const GET_VIDEOS = gql`
                 brand
                 description
                 price
+                image {
+                  data {
+                    attributes {
+                      url
+                    }
+                  }
+                }
                 createdAt
                 updatedAt
               }
@@ -49,5 +56,7 @@ export function sanitizeVideoQueryData(data) {
     title: video.attributes.title,
     product: video.attributes.product.data.attributes,
     media: video.attributes.media.data.attributes,
+    productImage:
+      video.attributes.product.data.attributes.image.data.attributes.url,
   }));
 }
