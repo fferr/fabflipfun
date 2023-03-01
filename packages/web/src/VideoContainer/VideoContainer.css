@@ -33,7 +33,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 72px;
+  top: 104px;
   right: 60px;
   z-index: 2;
 }
@@ -90,8 +90,8 @@
   }
 
   .video-mute-button {
-    top: 60px;
-    right: 120px;
+    top: 84px;
+    right: 110px;
   }
 
   .video-product-details {
