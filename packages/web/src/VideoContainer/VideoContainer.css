@@ -7,6 +7,11 @@
   justify-content: center;
 }
 
+.video-container .shared-button {
+  margin-top: 20px;
+  width: 160px;
+}
+
 .video {
   height: 80%;
   width: 80%;

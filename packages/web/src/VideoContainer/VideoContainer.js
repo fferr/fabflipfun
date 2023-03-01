@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
 
@@ -26,6 +27,9 @@ const VideoContainer = ({ index, loadMoreRef }) => {
     }
   }, [isVisible]);
 
+  const handleClickCTA = () =>
+    window.open('https://fabfitfun.com/shop', '_blank');
+
   const onVideoClick = () => {
     setMuted((prevState) => !prevState);
   };
@@ -33,15 +37,17 @@ const VideoContainer = ({ index, loadMoreRef }) => {
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
       <video
-        className="video_player"
+        className="video"
         loop
         preload="true"
         ref={videoRef}
         onClick={onVideoClick}
         src="http://localhost:1337/uploads/INSERTNAMEHERE_b9007ecb98.mp4"
         autoPlay
+        data-testid="video-element"
         muted={muted}
       ></video>
+      <Button onClick={handleClickCTA}>CTA</Button>
     </div>
   );
 };

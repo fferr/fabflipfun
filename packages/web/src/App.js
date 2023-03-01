@@ -4,10 +4,8 @@ import { useElementOnScreen } from './hooks/useElementOnScreen';
 import VideoContainer from './VideoContainer/VideoContainer';
 import { createSocketConnection } from './api/websocket';
 import { NewVideoButton } from './NewVideoButton';
-import commons from 'commons';
 
 createSocketConnection();
-console.log(commons());
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
   const loadMoreRef = useRef();
