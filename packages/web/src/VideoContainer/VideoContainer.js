@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeOff, faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
-import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
 
