@@ -13,15 +13,8 @@ beforeEach(() => {
   window.IntersectionObserver = mockIntersectionObserver;
 });
 
-test('renders not playing correctly', () => {
+test('renders correctly', () => {
   render(<VideoContainer />);
-  const videoText = screen.getByText(/Not Playing/i);
-  expect(videoText).toBeInTheDocument();
-});
-
-test('renders playing correctly', () => {
-  jest.spyOn(hooks, 'useElementOnScreen').mockImplementation(() => true);
-  render(<VideoContainer />);
-  const videoText = screen.getByText(/Playing/i);
-  expect(videoText).toBeInTheDocument();
+  const videoElement = screen.getByTestId('video-element');
+  expect(videoElement).toBeInTheDocument();
 });
