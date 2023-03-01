@@ -10,6 +10,8 @@ createSocketConnection();
 
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
+  const [isMuted, setIsMuted] = useState(true);
+  const [videoPlaying, setVideoPlaying] = useState(0);
   const loadMoreRef = useRef();
   const videosListRef = useRef();
 
@@ -34,12 +36,20 @@ function App() {
     }
   }, [loadMoreVideos]);
 
+  const handleClickMute = () => {
+    setIsMuted((prevState) => !prevState);
+  };
+
   return (
     <ApolloClientWrapper client={apolloClient}>
       <div className="App">
         <VideosManager
           loadMoreRef={loadMoreRef}
           videosListRef={videosListRef}
+          isMuted={isMuted}
+          handleClickMute={handleClickMute}
+          videoPlaying={videoPlaying}
+          setVideoPlaying={setVideoPlaying}
         />
         <NewVideoButton visible onClick={handleClickNewVideo} />
       </div>

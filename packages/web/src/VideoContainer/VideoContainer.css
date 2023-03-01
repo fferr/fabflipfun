@@ -32,8 +32,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 60px;
-  right: 120px;
+  top: 132px;
+  right: 60px;
   z-index: 2;
 }
 
@@ -49,5 +49,10 @@
   .video {
     height: 600px;
     width: 350px;
+  }
+
+  .video-mute-button {
+    top: 60px;
+    right: 120px;
   }
 }

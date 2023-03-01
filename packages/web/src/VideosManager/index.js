@@ -1,7 +1,14 @@
 import VideoContainer from '../VideoContainer/VideoContainer';
 import { sanitizeVideoQueryData, useVideosQuery } from '../api/queries';
 
-export function VideosManager({ videosListRef, loadMoreRef }) {
+export function VideosManager({
+  videosListRef,
+  loadMoreRef,
+  isMuted,
+  handleClickMute,
+  videoPlaying,
+  setVideoPlaying,
+}) {
   const { loading, error, data } = useVideosQuery();
   if (error) {
     console.error('Failed to load videos', error);
@@ -20,6 +27,10 @@ export function VideosManager({ videosListRef, loadMoreRef }) {
           index={index}
           loadMoreRef={loadMoreRef}
           key={index}
+          isMuted={isMuted}
+          handleClickMute={handleClickMute}
+          videoPlaying={videoPlaying}
+          setVideoPlaying={setVideoPlaying}
           videoSrc={video.media.url}
         />
       ))}
