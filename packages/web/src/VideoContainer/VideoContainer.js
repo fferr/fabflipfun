@@ -64,7 +64,18 @@ const VideoContainer = ({
         data-testid="video-element"
         muted={isMuted}
       ></video>
-      <Button onClick={handleClickCTA}>CTA</Button>
+      <div className="video-product-details">
+        <div className="video-product-image-container" onClick={handleClickCTA}>
+          <img src="https://scontent01.fabfitfun.com/ecom/images/2021/8/697000000_spongell-hand-body-wash-70-honey-blossom-SPO-BE-166-sf-1.jpg"></img>
+        </div>
+        <div>
+          <p className="video-product-name" onClick={handleClickCTA}>
+            Brand Name - Product Name
+          </p>
+          <p>Product Description</p>
+          <p>$0.00</p>
+        </div>
+      </div>
     </div>
   );
 };

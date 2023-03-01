@@ -19,6 +19,7 @@
   border: solid red;
   display: flex;
   align-items: flex-end;
+  background-color: black;
 }
 
 .video-mute-button {
@@ -32,12 +33,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 132px;
+  top: 72px;
   right: 60px;
   z-index: 2;
 }
 
 .video-mute-button:hover {
+  cursor: pointer;
+}
+
+.video-product-details {
+  font: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: absolute;
+  width: 80%;
+  bottom: 96px;
+}
+
+.video-product-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+.video-product-image-container:hover {
+  cursor: pointer;
+}
+
+.video-product-details img {
+  height: 30px;
+  width: 30px;
+}
+
+.video-product-name:hover {
   cursor: pointer;
 }
 
@@ -54,5 +92,16 @@
   .video-mute-button {
     top: 60px;
     right: 120px;
+  }
+
+  .video-product-details {
+    width: 350px;
+    bottom: 72px;
+    font-size: 12px;
+  }
+
+  .video-product-image-container {
+    margin-right: 36px;
+    margin-left: 26px;
   }
 }
