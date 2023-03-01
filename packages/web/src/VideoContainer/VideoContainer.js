@@ -44,6 +44,7 @@ const VideoContainer = ({ index, loadMoreRef }) => {
         onClick={onVideoClick}
         src="http://localhost:1337/uploads/INSERTNAMEHERE_b9007ecb98.mp4"
         autoPlay
+        data-testid="video-element"
         muted={muted}
       ></video>
       <Button onClick={handleClickCTA}>CTA</Button>
