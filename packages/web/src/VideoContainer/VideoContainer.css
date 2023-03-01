@@ -1,10 +1,10 @@
 .video-container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  margin-bottom: 24px;
 }
 
 .video-container .shared-button {
@@ -15,13 +15,10 @@
 .video {
   height: 98%;
   width: 94%;
-  display: flex;
-  align-items: flex-end;
-  background-color: black;
 }
 
 .video-mute-button {
-  background-color: rgba(219, 219, 219, 0.2);
+  background-color: rgba(60, 60, 60, 0.3);
   border-radius: 50%;
   color: white;
   border: none;
@@ -31,8 +28,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 42px;
-  right: 42px;
+  top: 12px;
+  right: 24px;
   z-index: 2;
 }
 
@@ -49,7 +46,12 @@
   color: white;
   position: absolute;
   width: 94%;
-  bottom: 42px;
+  bottom: 0px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(60, 60, 60, 0.3),
+    rgba(60, 60, 60, 0.8)
+  );
 }
 
 .video-product-image-container {
@@ -78,23 +80,19 @@
 }
 
 @media screen and (min-width: 992px) {
-  .video-container {
-    height: 624px;
-    width: 350px;
-  }
   .video {
     height: 600px;
     width: 350px;
   }
 
   .video-mute-button {
-    top: 42px;
+    top: 24px;
     right: 30px;
   }
 
   .video-product-details {
-    width: 350px;
-    bottom: 30px;
+    width: 338px;
+    bottom: 0px;
     font-size: 12px;
   }
 
