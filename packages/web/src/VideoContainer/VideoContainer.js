@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVolumeOff, faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
 import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
@@ -31,11 +33,24 @@ const VideoContainer = ({ index, loadMoreRef }) => {
     window.open('https://fabfitfun.com/shop', '_blank');
 
   const onVideoClick = () => {
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(!isPlaying);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const onMuteButtonClick = () => {
     setMuted((prevState) => !prevState);
   };
 
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
+      <button onClick={onMuteButtonClick} className="video-mute-button">
+        <FontAwesomeIcon icon={muted ? faVolumeOff : faVolumeHigh} />
+      </button>
       <video
         className="video"
         loop
