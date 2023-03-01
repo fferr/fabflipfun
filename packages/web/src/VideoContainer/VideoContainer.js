@@ -1,9 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeOff, faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
 import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
-import Video from './INSERTNAMEHERE.mp4';
 import './VideoContainer.css';
 
 const VideoContainer = ({
@@ -14,7 +13,6 @@ const VideoContainer = ({
   videoPlaying,
   setVideoPlaying,
 }) => {
-  // const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
   const options = {
     root: null,
@@ -61,7 +59,7 @@ const VideoContainer = ({
         preload="true"
         ref={videoRef}
         onClick={onVideoClick}
-        src={Video}
+        // src={Video}
         autoPlay
         data-testid="video-element"
         muted={isMuted}
