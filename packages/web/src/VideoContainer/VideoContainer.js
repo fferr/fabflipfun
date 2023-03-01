@@ -5,7 +5,7 @@ import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
 
-const VideoContainer = ({ index, loadMoreRef }) => {
+const VideoContainer = ({ index, loadMoreRef, videoSrc }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
   const videoRef = useRef(null);
@@ -57,7 +57,7 @@ const VideoContainer = ({ index, loadMoreRef }) => {
         preload="true"
         ref={videoRef}
         onClick={onVideoClick}
-        src="http://localhost:1337/uploads/INSERTNAMEHERE_b9007ecb98.mp4"
+        src={`http://localhost:1337${videoSrc}`}
         autoPlay
         data-testid="video-element"
         muted={muted}
