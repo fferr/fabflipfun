@@ -19,7 +19,6 @@
   border: solid red;
   display: flex;
   align-items: flex-end;
-  background-color: black;
 }
 
 .video-mute-button {
