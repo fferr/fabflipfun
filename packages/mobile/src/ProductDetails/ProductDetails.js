@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const quickslick = require('./quickslick_cc9111ffdb.jpg');
 
@@ -8,6 +9,7 @@ const ProductDetails = () => {
     <View style={styles.descriptionContainer}>
       <Image source={quickslick} style={{ width: 100, height: 100 }} resizeMode="contain" />
       <Text style={styles.descriptionText}>Description Text Goes Here</Text>
+      <Icon name="rocket" size={30} />
     </View>
   );
 };
