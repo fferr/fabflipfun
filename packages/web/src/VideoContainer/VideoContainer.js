@@ -29,12 +29,22 @@ const VideoContainer = ({ index, loadMoreRef }) => {
   }, [isVisible]);
 
   const onVideoClick = () => {
+    if (isPlaying) {
+      videoRef.current.pause();
+      setIsPlaying(!isPlaying);
+    } else {
+      videoRef.current.play();
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const onMuteButtonClick = () => {
     setMuted((prevState) => !prevState);
   };
 
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
-      <button className="video-mute-button">
+      <button onClick={onMuteButtonClick} className="video-mute-button">
         <FontAwesomeIcon icon={muted ? faVolumeOff : faVolumeHigh} />
       </button>
       <video
