@@ -1,15 +1,21 @@
 import './App.css';
 import { useState, useRef, useEffect } from 'react';
 import { useElementOnScreen } from './hooks/useElementOnScreen';
-import VideoContainer from './VideoContainer/VideoContainer';
 import { createSocketConnection } from './api/websocket';
+import { getApolloClient, ApolloClientWrapper } from './api/apollo';
 import { NewVideoButton } from './NewVideoButton';
+import { VideosManager } from './VideosManager';
 
 createSocketConnection();
+
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
+  const [isMuted, setIsMuted] = useState(true);
+  const [videoPlaying, setVideoPlaying] = useState(0);
   const loadMoreRef = useRef();
   const videosListRef = useRef();
+
+  const apolloClient = getApolloClient();
 
   const options = {
     root: null,
@@ -30,15 +36,24 @@ function App() {
     }
   }, [loadMoreVideos]);
 
+  const handleClickMute = () => {
+    setIsMuted((prevState) => !prevState);
+  };
+
   return (
-    <div className="App">
-      <div ref={videosListRef} className="videos-list">
-        {videos.map((v, index) => (
-          <VideoContainer index={index} loadMoreRef={loadMoreRef} key={index} />
-        ))}
+    <ApolloClientWrapper client={apolloClient}>
+      <div className="App">
+        <VideosManager
+          loadMoreRef={loadMoreRef}
+          videosListRef={videosListRef}
+          isMuted={isMuted}
+          handleClickMute={handleClickMute}
+          videoPlaying={videoPlaying}
+          setVideoPlaying={setVideoPlaying}
+        />
+        <NewVideoButton visible onClick={handleClickNewVideo} />
       </div>
-      <NewVideoButton visible onClick={handleClickNewVideo} />
-    </div>
+    </ApolloClientWrapper>
   );
 }
 

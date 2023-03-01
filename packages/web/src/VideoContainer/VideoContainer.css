@@ -1,6 +1,5 @@
 .video-container {
   height: 100vh;
-  border: solid blue;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,11 +13,11 @@
 }
 
 .video {
-  height: 80%;
-  width: 80%;
-  border: solid red;
+  height: 98%;
+  width: 94%;
   display: flex;
   align-items: flex-end;
+  background-color: black;
 }
 
 .video-mute-button {
@@ -32,8 +31,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 60px;
-  right: 120px;
+  top: 42px;
+  right: 42px;
   z-index: 2;
 }
 
@@ -41,13 +40,66 @@
   cursor: pointer;
 }
 
+.video-product-details {
+  font: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: absolute;
+  width: 94%;
+  bottom: 42px;
+}
+
+.video-product-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+.video-product-image-container:hover {
+  cursor: pointer;
+}
+
+.video-product-details img {
+  height: 30px;
+  width: 30px;
+}
+
+.video-product-name:hover {
+  cursor: pointer;
+}
+
 @media screen and (min-width: 992px) {
   .video-container {
-    height: 720px;
-    width: 520px;
+    height: 624px;
+    width: 350px;
   }
   .video {
     height: 600px;
     width: 350px;
+  }
+
+  .video-mute-button {
+    top: 42px;
+    right: 30px;
+  }
+
+  .video-product-details {
+    width: 350px;
+    bottom: 30px;
+    font-size: 12px;
+  }
+
+  .video-product-image-container {
+    margin-right: 36px;
+    margin-left: 26px;
   }
 }
