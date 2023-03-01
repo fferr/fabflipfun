@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ScrollView, StyleSheet, Dimensions } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { ScrollView, StyleSheet, Dimensions, View, SafeAreaView } from 'react-native';
+import ProductDetails from './src/ProductDetails';
 
 import VideoPlayer from './src/VideoPlayer';
 
@@ -12,8 +13,7 @@ const App = () => {
   const [soundOn, setSoundOn] = useState(false);
   const handleVideoChange = event => {
     const nextVideo = Math.round(
-      (event.nativeEvent.contentOffset.y - height * 0.6) /
-        (event.nativeEvent.contentSize.height / videos.length)
+      event.nativeEvent.contentOffset.y / (event.nativeEvent.contentSize.height / videos.length)
     );
 
     console.log(nextVideo);
@@ -30,35 +30,19 @@ const App = () => {
   return (
     <ScrollView ref={ref} onScrollEndDrag={handleVideoChange} bounces={false}>
       {videos.map((video, index) => (
-        <VideoPlayer
-          videoUri={video}
-          isPlaying={index == playingVideo}
-          index={index}
-          toggleSoundOn={() => setSoundOn(!soundOn)}
-          soundOn={soundOn}
-        />
+        <>
+          <VideoPlayer
+            videoUri={video}
+            isPlaying={index == playingVideo}
+            index={index}
+            toggleSoundOn={() => setSoundOn(!soundOn)}
+            soundOn={soundOn}
+          />
+          <ProductDetails />
+        </>
       ))}
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

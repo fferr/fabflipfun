@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { StyleSheet, View, TouchableOpacity, Text, Dimensions } from 'react-native';
+import { StyleSheet, View, TouchableHighlight, Text, Dimensions } from 'react-native';
 import Video from 'react-native-video';
 
 const { width, height } = Dimensions.get('window');
@@ -22,7 +22,7 @@ const VideoPlayer = ({ videoUri, isPlaying, index, soundOn, toggleSoundOn }) => 
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity activeOpacity={0.75} onPress={toggleSoundOn} style={styles.videoContainer}>
+      <TouchableHighlight onPress={toggleSoundOn} style={styles.videoContainer}>
         <Video
           volume={soundOn ? 0 : 5}
           ref={videoRef}
@@ -33,14 +33,14 @@ const VideoPlayer = ({ videoUri, isPlaying, index, soundOn, toggleSoundOn }) => 
           paused={!isPlaying}
           onEnd={handleVideoEnd}
         />
-      </TouchableOpacity>
+      </TouchableHighlight>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height,
+    height: height - 140,
     width,
     backgroundColor: 'black',
   },
@@ -51,18 +51,6 @@ const styles = StyleSheet.create({
   },
   video: {
     ...StyleSheet.absoluteFill,
-  },
-  playButton: {
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    borderRadius: 25,
-    width: 50,
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  playButtonText: {
-    color: 'white',
-    fontSize: 32,
   },
 });
 
