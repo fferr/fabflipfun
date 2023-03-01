@@ -1,10 +1,10 @@
 import React from 'react';
-// import { DesktopButton } from 'commons';
+import { DesktopButton } from '../styled-components/Button';
 
 const Button = ({ onClick, children }) => (
-  <button className="shared-button" type="button" onClick={onClick}>
+  <DesktopButton className="shared-button" type="button" onClick={onClick}>
     {children}
-  </button>
+  </DesktopButton>
 );
 
 export default Button;
