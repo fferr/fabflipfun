@@ -1,20 +1,12 @@
 import './App.css';
 import { useState, useRef, useEffect } from 'react';
 import { useElementOnScreen } from './hooks/useElementOnScreen';
-import VideoContainer from './VideoContainer/VideoContainer';
 import { createSocketConnection } from './api/websocket';
 import { getApolloClient, ApolloClientWrapper } from './api/apollo';
 import { NewVideoButton } from './NewVideoButton';
-import { useVideosQuery } from './api/queries';
+import { VideosManager } from './VideosManager';
 
 createSocketConnection();
-
-function TestComp() {
-  const result = useVideosQuery();
-  console.log('{data, error, loading}::', result);
-
-  return <div>test</div>;
-}
 
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
@@ -51,20 +43,14 @@ function App() {
   return (
     <ApolloClientWrapper client={apolloClient}>
       <div className="App">
-        <div ref={videosListRef} className="videos-list">
-          <TestComp />
-          {videos.map((v, index) => (
-            <VideoContainer
-              index={index}
-              loadMoreRef={loadMoreRef}
-              key={index}
-              isMuted={isMuted}
-              handleClickMute={handleClickMute}
-              videoPlaying={videoPlaying}
-              setVideoPlaying={setVideoPlaying}
-            />
-          ))}
-        </div>
+        <VideosManager
+          loadMoreRef={loadMoreRef}
+          videosListRef={videosListRef}
+          isMuted={isMuted}
+          handleClickMute={handleClickMute}
+          videoPlaying={videoPlaying}
+          setVideoPlaying={setVideoPlaying}
+        />
         <NewVideoButton visible onClick={handleClickNewVideo} />
       </div>
     </ApolloClientWrapper>

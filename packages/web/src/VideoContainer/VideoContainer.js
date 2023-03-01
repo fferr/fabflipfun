@@ -11,6 +11,7 @@ const VideoContainer = ({
   handleClickMute,
   videoPlaying,
   setVideoPlaying,
+  videoSrc,
 }) => {
   const videoRef = useRef(null);
   const options = {
@@ -58,7 +59,7 @@ const VideoContainer = ({
         preload="true"
         ref={videoRef}
         onClick={onVideoClick}
-        // src={Video}
+        src={`http://localhost:1337${videoSrc}`}
         autoPlay
         data-testid="video-element"
         muted={isMuted}
