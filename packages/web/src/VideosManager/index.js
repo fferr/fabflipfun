@@ -32,6 +32,11 @@ export function VideosManager({
           videoPlaying={videoPlaying}
           setVideoPlaying={setVideoPlaying}
           videoSrc={video.media.url}
+          brand={video.product.brand}
+          description={video.product.description}
+          price={video.product.price}
+          imageSrc={video.productImage}
+          id={video.id}
         />
       ))}
     </div>
