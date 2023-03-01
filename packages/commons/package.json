@@ -1,6 +1,6 @@
 {
-  "name": "commons",
-  "version": "0.0.0",
+  "name": "@workspace/commons",
+  "version": "0.1.0",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
   "keywords": [],
   "author": "fferr <fedeferreyra1@gmail.com>",
@@ -16,6 +16,9 @@
     "test": "node ./__tests__/commons.test.js"
   },
   "dependencies": {
+    "@workspace/mobile": "0.1.0",
+    "@workspace/web": "0.1.0",
+    "@workspace/fabflipfun": "0.1.0",
     "socket.io-client": "^4.6.1"
   }
 }

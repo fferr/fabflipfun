@@ -1,8 +1,24 @@
 {
-  "name": "mobile",
-  "version": "0.0.1",
-  "private": true,
+  "name": "@workspace/mobile",
+  "version": "0.1.0",
+  "description": "> TODO: description",
+  "author": "Cato <catriel.dapice@devborn.com>",
+  "homepage": "https://github.com/fferr/fabflipfun#readme",
+  "license": "ISC",
+  "main": "lib/mobile.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fferr/fabflipfun.git"
+  },
   "scripts": {
+    "test": "node ./__tests__/mobile.test.js",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -10,6 +26,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@workspace/commons": "0.1.0",
+    "@workspace/web": "0.1.0",
+    "@workspace/fabflipfun": "0.1.0",
     "react": "18.1.0",
     "react-native": "0.70.7",
     "react-native-video": "5.2.1",
@@ -27,5 +46,8 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "bugs": {
+    "url": "https://github.com/fferr/fabflipfun/issues"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "fabflipfun",
+  "name": "@workspace/fabflipfun",
   "private": true,
   "version": "0.1.0",
   "description": "A Strapi application",
@@ -10,6 +10,9 @@
     "strapi": "strapi"
   },
   "dependencies": {
+    "@workspace/commons": "0.1.0",
+    "@workspace/web": "0.1.0",
+    "@workspace/mobile": "0.1.0",
     "@strapi/plugin-i18n": "4.6.2",
     "@strapi/plugin-users-permissions": "4.6.2",
     "@strapi/strapi": "4.6.2",
