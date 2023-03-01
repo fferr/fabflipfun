@@ -5,7 +5,8 @@ import Video from 'react-native-video';
 const {width, height} = Dimensions.get('window');
 
 const VideoPlayer = ({video, isPlaying, index, soundOn, toggleSoundOn}) => {
-    console.log(video, isPlaying, index);
+    const url = `http://localhost:1337${video.media.url}`;
+    console.log(video.media, url);
     const videoRef = useRef(null);
 
     const restartVideo = () => {
@@ -26,7 +27,7 @@ const VideoPlayer = ({video, isPlaying, index, soundOn, toggleSoundOn}) => {
                 <Video
                     volume={soundOn ? 0 : 5}
                     ref={videoRef}
-                    source={videoUri}
+                    source={{uri: url}}
                     style={styles.video}
                     resizeMode={'cover'}
                     repeat={true}

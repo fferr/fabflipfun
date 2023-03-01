@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {ScrollView, StyleSheet, Dimensions, View, SafeAreaView} from 'react-native';
-import {ApolloClientWrapper, createApolloClient, useVideosQuery} from "commons/src";
+import {ApolloClientWrapper, createApolloClient} from "commons";
 import VideosScrollView from "./src/VideosScrollView";
 
 // const asd = require('./src/VideoPlayer/quick_slick_ce04033941.mp4');

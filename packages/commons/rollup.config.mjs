@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import graphql from "@rollup/plugin-graphql";
 
 export default {
-    input: 'src/index.js',
+    input: 'index.js',
     output: [
         {
             file: 'dist/my-library.cjs.js',

@@ -44,12 +44,6 @@ export const GET_VIDEOS = gql`
   }
 `;
 
-export function useVideosQuery() {
-  const { loading, error, data } = useQuery(GET_VIDEOS);
-
-  return { loading, error, data };
-}
-
 export function sanitizeVideoQueryData(data) {
   return (data?.videos?.data || []).map((video) => ({
     id: video.id,
@@ -60,3 +54,9 @@ export function sanitizeVideoQueryData(data) {
       video.attributes.product.data.attributes.image.data.attributes.url,
   }));
 }
+export function useVideosQuery() {
+  const { loading, error, data } = useQuery(GET_VIDEOS);
+
+  return { loading, error, data: sanitizeVideoQueryData(data) };
+}
+
