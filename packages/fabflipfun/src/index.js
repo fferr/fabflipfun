@@ -10,6 +10,8 @@ module.exports = {
   register(/*{ strapi }*/) {
     const extensionService = strapi.plugin("graphql").service("extension");
 
+    // not cool, but it works
+    // CORS isnt working with apollo client in web
     extensionService.use({
       resolversConfig: {
         "Query.videos": {

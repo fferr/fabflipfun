@@ -2,13 +2,12 @@ import './App.css';
 import { useState, useRef, useEffect } from 'react';
 import { useElementOnScreen } from './hooks/useElementOnScreen';
 import VideoContainer from './VideoContainer/VideoContainer';
-import { createWebsocketConnection } from './api/websocket';
-import { getApolloClient } from './api/apollo';
+import { createSocketConnection } from './api/websocket';
+import { getApolloClient, ApolloClientWrapper } from './api/apollo';
 import { NewVideoButton } from './NewVideoButton';
 import { useVideosQuery } from './api/queries';
-import { ApolloClientWrapper } from './api/apollo-config';
 
-createWebsocketConnection();
+createSocketConnection();
 
 function TestComp() {
   const result = useVideosQuery();
