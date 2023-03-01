@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .video-container .shared-button {
@@ -18,6 +19,7 @@
   border: solid red;
   display: flex;
   align-items: flex-end;
+  background-color: black;
 }
 
 .video-mute-button {
@@ -27,6 +29,13 @@
   border: none;
   height: 30px;
   width: 30px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 60px;
+  right: 120px;
+  z-index: 2;
 }
 
 .video-mute-button:hover {
