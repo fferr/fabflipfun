@@ -8,6 +8,7 @@ import { NewVideoButton } from './NewVideoButton';
 createSocketConnection();
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
+  const [isMuted, setIsMuted] = useState(true);
   const loadMoreRef = useRef();
   const videosListRef = useRef();
 
@@ -30,11 +31,21 @@ function App() {
     }
   }, [loadMoreVideos]);
 
+  const handleClickMute = () => {
+    setIsMuted((prevState) => !prevState);
+  };
+
   return (
     <div className="App">
       <div ref={videosListRef} className="videos-list">
         {videos.map((v, index) => (
-          <VideoContainer index={index} loadMoreRef={loadMoreRef} key={index} />
+          <VideoContainer
+            index={index}
+            loadMoreRef={loadMoreRef}
+            key={index}
+            isMuted={isMuted}
+            handleClickMute={handleClickMute}
+          />
         ))}
       </div>
       <NewVideoButton visible onClick={handleClickNewVideo} />

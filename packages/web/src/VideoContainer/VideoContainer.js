@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeOff, faVolumeHigh } from '@fortawesome/free-solid-svg-icons';
 import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
+import Video from './INSERTNAMEHERE.mp4';
 import './VideoContainer.css';
 
-const VideoContainer = ({ index, loadMoreRef }) => {
+const VideoContainer = ({ index, loadMoreRef, isMuted, handleClickMute }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
   const videoRef = useRef(null);
   const options = {
     root: null,
@@ -42,14 +42,10 @@ const VideoContainer = ({ index, loadMoreRef }) => {
     }
   };
 
-  const onMuteButtonClick = () => {
-    setMuted((prevState) => !prevState);
-  };
-
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
-      <button onClick={onMuteButtonClick} className="video-mute-button">
-        <FontAwesomeIcon icon={muted ? faVolumeOff : faVolumeHigh} />
+      <button onClick={handleClickMute} className="video-mute-button">
+        <FontAwesomeIcon icon={isMuted ? faVolumeOff : faVolumeHigh} />
       </button>
       <video
         className="video"
@@ -57,10 +53,10 @@ const VideoContainer = ({ index, loadMoreRef }) => {
         preload="true"
         ref={videoRef}
         onClick={onVideoClick}
-        src="http://localhost:1337/uploads/INSERTNAMEHERE_b9007ecb98.mp4"
+        src={Video}
         autoPlay
         data-testid="video-element"
-        muted={muted}
+        muted={isMuted}
       ></video>
       <Button onClick={handleClickCTA}>CTA</Button>
     </div>
