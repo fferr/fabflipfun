@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import Button from '../shared/Button';
 import { useElementOnScreen } from '../hooks/useElementOnScreen';
 import './VideoContainer.css';
-import * as commons from 'commons';
 
 const VideoContainer = ({ index, loadMoreRef }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -37,12 +36,8 @@ const VideoContainer = ({ index, loadMoreRef }) => {
 
   return (
     <div className="video-container" ref={index % 3 === 0 ? loadMoreRef : null}>
-      <div className="video" ref={videoRef} data-testid="video-element">
-        {isPlaying ? 'Playing' : 'Not Playing'}
-      </div>
-      <Button onClick={handleClickCTA}>CTA</Button>
       <video
-        className="video_player"
+        className="video"
         loop
         preload="true"
         ref={videoRef}
@@ -51,6 +46,7 @@ const VideoContainer = ({ index, loadMoreRef }) => {
         autoPlay
         muted={muted}
       ></video>
+      <Button onClick={handleClickCTA}>CTA</Button>
     </div>
   );
 };
