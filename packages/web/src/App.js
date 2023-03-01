@@ -1,12 +1,9 @@
 import './App.css';
 import { useState, useRef, useEffect } from 'react';
 import { useElementOnScreen } from './hooks/useElementOnScreen';
-import { createSocketConnection } from './api/websocket';
 import { getApolloClient, ApolloClientWrapper } from './api/apollo';
 import { NewVideoButton } from './NewVideoButton';
 import { VideosManager } from './VideosManager';
-
-createSocketConnection();
 
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
