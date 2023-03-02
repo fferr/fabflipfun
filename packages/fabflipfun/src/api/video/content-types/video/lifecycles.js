@@ -1,10 +1,14 @@
 module.exports = {
-  afterCreate(event) {
+  afterUpdate(event) {
     const {
       data,
       // where, select, populate
     } = event.params;
     console.log("event::", event);
-    strapi.socket.emit("new-video", event);
+
+    // means it was a publish event
+    if (data.publishedAt) {
+      strapi.socket.emit("new-video", event);
+    }
   },
 };
