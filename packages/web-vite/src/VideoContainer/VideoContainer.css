@@ -1,0 +1,103 @@
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.video-container .shared-button {
+  margin-top: 20px;
+  width: 160px;
+}
+
+.video {
+  height: 98%;
+  width: 94%;
+}
+
+.video-mute-button {
+  background-color: rgba(60, 60, 60, 0.3);
+  border-radius: 50%;
+  color: white;
+  border: none;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 12px;
+  right: 24px;
+  z-index: 2;
+}
+
+.video-mute-button:hover {
+  cursor: pointer;
+}
+
+.video-product-details {
+  font: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: absolute;
+  width: 94%;
+  bottom: 0px;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(60, 60, 60, 0.3),
+    rgba(60, 60, 60, 0.8)
+  );
+}
+
+.video-product-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: 24px;
+  margin-left: 24px;
+}
+
+.video-product-image-container:hover {
+  cursor: pointer;
+}
+
+.video-product-details img {
+  height: 30px;
+  width: 30px;
+}
+
+.video-product-name:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 992px) {
+  .video {
+    height: 600px;
+    width: 350px;
+  }
+
+  .video-mute-button {
+    top: 24px;
+    right: 30px;
+  }
+
+  .video-product-details {
+    width: 338px;
+    bottom: 0px;
+    font-size: 12px;
+  }
+
+  .video-product-image-container {
+    margin-right: 36px;
+    margin-left: 26px;
+  }
+}
