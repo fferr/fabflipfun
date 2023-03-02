@@ -35,7 +35,7 @@ const VideosScrollView = () => {
                         toggleSoundOn={() => setSoundOn(!soundOn)}
                         soundOn={soundOn}
                     />
-                    <ProductDetails/>
+                    <ProductDetails product={video.product}/>
                 </>
             ))}
         </ScrollView>
