@@ -37,6 +37,7 @@ const VideoContainer = ({
     }
     if (isPlaying) {
       videoRef.current.pause();
+      setVideoPlaying(null);
     }
   };
 
