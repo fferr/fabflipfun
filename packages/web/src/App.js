@@ -4,15 +4,18 @@ import { useElementOnScreen } from './hooks/useElementOnScreen';
 import { getApolloClient, ApolloClientWrapper } from './api/apollo';
 import { NewVideoButton } from './NewVideoButton';
 import { VideosManager } from './VideosManager';
+import { createSocketConnection } from './api/websocket';
+
+const apolloClient = getApolloClient();
+createSocketConnection(process.env.REACT_APP_WS_URL, () => apolloClient);
 
 function App() {
   const [videos, setVideos] = useState([1, 2, 3, 4]);
   const [isMuted, setIsMuted] = useState(true);
   const [videoPlaying, setVideoPlaying] = useState(0);
+  const [newVideosReady, setNewVideosReady] = useState(false);
   const loadMoreRef = useRef();
   const videosListRef = useRef();
-
-  const apolloClient = getApolloClient();
 
   const options = {
     root: null,
@@ -23,7 +26,12 @@ function App() {
 
   const handleClickNewVideo = () => {
     console.log('clicked new video');
+    setNewVideosReady(false);
     videosListRef.current.scrollIntoView();
+  };
+
+  const handleNewVideoDetected = () => {
+    setNewVideosReady(true);
   };
 
   useEffect(() => {
@@ -47,8 +55,12 @@ function App() {
           handleClickMute={handleClickMute}
           videoPlaying={videoPlaying}
           setVideoPlaying={setVideoPlaying}
+          handleNewVideoDetected={handleNewVideoDetected}
         />
-        <NewVideoButton visible onClick={handleClickNewVideo} />
+        <NewVideoButton
+          visible={newVideosReady}
+          onClick={handleClickNewVideo}
+        />
       </div>
     </ApolloClientWrapper>
   );

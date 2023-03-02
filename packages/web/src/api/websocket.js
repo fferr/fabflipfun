@@ -1,8 +1,9 @@
 import socketIO from 'socket.io-client';
+import { GET_VIDEOS } from './queries';
 // THIS SHOULD BE PART OF COMMONS
 
 let socket;
-function startSocketEvents() {
+function startSocketEvents(getApolloClient) {
   if (!socket) {
     console.error('Socket not initialized');
   }
@@ -12,14 +13,17 @@ function startSocketEvents() {
   socket.on('disconnect', () => {
     console.log('disconnected from server');
   });
-  socket.on('new-video', (newVideo) => {
-    console.log('newVideo', newVideo);
+  socket.on('new-video', () => {
+    const apolloClient = getApolloClient();
+    apolloClient.refetchQueries({
+      include: [GET_VIDEOS],
+    });
   });
 }
 
-export function createSocketConnection(endpoint) {
+export function createSocketConnection(endpoint, getApolloClient) {
   if (!socket) {
     socket = socketIO.connect(endpoint);
-    startSocketEvents();
+    startSocketEvents(getApolloClient);
   }
 }

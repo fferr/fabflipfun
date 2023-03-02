@@ -1,5 +1,6 @@
 import VideoContainer from '../VideoContainer/VideoContainer';
 import { sanitizeVideoQueryData, useVideosQuery } from '../api/queries';
+import { useEffect } from 'react';
 
 export function VideosManager({
   videosListRef,
@@ -8,8 +9,21 @@ export function VideosManager({
   handleClickMute,
   videoPlaying,
   setVideoPlaying,
+  handleNewVideoDetected,
 }) {
-  const { loading, error, data } = useVideosQuery();
+  const { loading, error, data, previousData } = useVideosQuery();
+
+  useEffect(() => {
+    // meaning that there is a new video, so we show the button
+    if (
+      previousData &&
+      data &&
+      previousData.videos.data.length < data.videos.data.length
+    ) {
+      handleNewVideoDetected();
+    }
+  }, [data, previousData]);
+
   if (error) {
     console.error('Failed to load videos', error);
     return null;

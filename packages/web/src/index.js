@@ -3,10 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createSocketConnection } from './api/websocket';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-createSocketConnection(process.env.REACT_APP_WS_URL);
 
 root.render(
   <React.StrictMode>
