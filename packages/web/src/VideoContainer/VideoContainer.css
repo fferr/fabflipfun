@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-bottom: 24px;
+  margin-bottom: 84px;
 }
 
 .video-container .shared-button {
@@ -80,6 +80,9 @@
 }
 
 @media screen and (min-width: 992px) {
+  .video-container {
+    margin-bottom: 48px;
+  }
   .video {
     height: 600px;
     width: 350px;

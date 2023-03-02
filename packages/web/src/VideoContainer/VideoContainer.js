@@ -22,7 +22,7 @@ const VideoContainer = ({
   const options = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.3,
+    threshold: 0.7,
   };
   const isVisible = useElementOnScreen(options, videoRef);
   const isPlaying = videoPlaying === index;
